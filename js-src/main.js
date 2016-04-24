@@ -1,4 +1,3 @@
-var $ = require("jquery");
 var React = require("react");
 var ReactDOM = require("react-dom");
 
@@ -9,4 +8,4 @@ var main = function() {
   );
 }
 
-$(main);
+document.addEventListener("DOMContentLoaded", main);
