@@ -25765,6 +25765,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	var _reactRouter = __webpack_require__(166);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -25774,13 +25778,39 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
+	      { 'class': 'selector-box-container' },
+	      _react2.default.createElement(SelectorBox, null)
+	    );
+	  }
+	});
+
+	var SelectorBox = _react2.default.createClass({
+	  displayName: 'SelectorBox',
+
+	  contextTypes: {
+	    router: _react2.default.PropTypes.object
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    // Hack because react's <input> doesn't support this yet
+	    var dom = _reactDom2.default.findDOMNode(this);
+	    dom.firstChild.setAttribute("webkitdirectory", "");
+	    dom.firstChild.setAttribute("mozdirectory", "");
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
 	      null,
+	      _react2.default.createElement('input', { type: 'file', name: 'selector-box', webkitdirectory: true }),
 	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/mdblive/list' },
-	        'List'
+	        'button',
+	        { onClick: this.goButtonClicked },
+	        'Go!'
 	      )
 	    );
+	  },
+	  goButtonClicked: function goButtonClicked() {
+	    this.context.router.push("/mdblive/list");
 	  }
 	});
 

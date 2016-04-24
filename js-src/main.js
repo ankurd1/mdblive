@@ -6,10 +6,10 @@ import MovieListPage from './MovieListPage'
 
 var main = () => {
   ReactDOM.render(
-    <Router history={browserHistory}>
-      <Route path="/mdblive" component={LandingPage}/>
+	  <Router history={browserHistory}>
+			<Route path="/mdblive" component={LandingPage}/>
       <Route path="/mdblive/list" component={MovieListPage}/>
-    </Router>,
+		</Router>,
     document.getElementById('main')
   );
 }
