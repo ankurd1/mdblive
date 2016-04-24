@@ -70,8 +70,8 @@
 	  _reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.browserHistory },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _LandingPage2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'list', component: _MovieListPage2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/mdblive', component: _LandingPage2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/mdblive/list', component: _MovieListPage2.default })
 	  ), document.getElementById('main'));
 	};
 
