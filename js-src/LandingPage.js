@@ -5,7 +5,7 @@ var LandingPage = React.createClass({
   render() {
     return (
       <div>
-        <Link to='/list'>List</Link>
+        <Link to='/mdblive/list'>List</Link>
       </div>
     );
   }
