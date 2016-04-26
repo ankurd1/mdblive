@@ -1,11 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LandingPage from './LandingPage'
-import MovieListPage from './MovieListPage'
+import App from './App'
+import Header from './Header'
+import MovieListContainer from './MovieListContainer'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { rootReducer } from './reducers'
+
+var store = createStore(rootReducer)
 
 var main = () => {
   ReactDOM.render(
-    <LandingPage/>,
+    <Provider store={store}>
+      <App>
+        <Header/>
+        <MovieListContainer/>
+      </App>
+    </Provider>,
     document.getElementById('main')
   );
 }

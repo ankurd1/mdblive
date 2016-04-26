@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./build/ && ./node_modules/webpack/bin/webpack.js -p",
+    "build": "cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./build/ && ./node_modules/webpack/bin/webpack.js -p --config webpack.prod.config.js",
     "serve": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "repository": {
