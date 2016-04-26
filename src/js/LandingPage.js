@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
 
 var LandingPage = React.createClass({
   render() {
@@ -13,10 +12,6 @@ var LandingPage = React.createClass({
 });
 
 var SelectorBox = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-
   componentDidMount() {
     // Hack because react's <input> doesn't support this yet
     var dom = ReactDOM.findDOMNode(this);
@@ -34,7 +29,6 @@ var SelectorBox = React.createClass({
   },
 
   goButtonClicked() {
-    this.context.router.push("/mdblive/list");
   }
 });
 

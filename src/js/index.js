@@ -1,17 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, NoMatch, browserHistory } from 'react-router'
 import LandingPage from './LandingPage'
 import MovieListPage from './MovieListPage'
 
-// remove router. use redux
-
 var main = () => {
   ReactDOM.render(
-	  <Router history={browserHistory}>
-			<Route path="/mdblive" component={LandingPage}/>
-      <Route path="/mdblive/list" component={MovieListPage}/>
-		</Router>,
+    <LandingPage/>,
     document.getElementById('main')
   );
 }
