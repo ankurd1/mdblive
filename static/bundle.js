@@ -66,6 +66,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// remove router. use redux
+	// fix tabs and spaces. ughh
+
 	var main = function main() {
 	  _reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
