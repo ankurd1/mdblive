@@ -3,7 +3,7 @@ import URI from 'urijs'
 
 export function addFile(file) {
   return (dispatch, getState) => {
-    // maybe we can use some more properties of file here?
+    // TODO maybe we can use some more properties of file here?
     var sanitized = sanitize(file.name)
     if (sanitized.length != 0) {
       dispatch(addMovie(sanitized))
@@ -13,7 +13,7 @@ export function addFile(file) {
           .query({'t': sanitized})
           .toString()
         return fetch(uri)
-          // error handling
+          // TODO error handling
           .then(response => {
             if (response.ok) {
               response.json().then(json => {

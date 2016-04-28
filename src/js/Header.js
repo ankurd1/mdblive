@@ -14,9 +14,11 @@ var HeaderImpl = React.createClass({
 
   render() {
     return (
-      <div>
-        <input ref={this.setupInputNode} type="file" name="selector-box"/>
-        <button onClick={this.goButtonClicked}>Go!</button>
+      <div className="row form-inline">
+        <div className="header-box">
+          <input className="col-xs-offset-8 col-xs-3 form-control" ref={this.setupInputNode} type="file" name="selector-box"/>
+          <button className="col-xs-1 btn btn-success" onClick={this.goButtonClicked}>Go!</button>
+        </div>
       </div>
     );
   },

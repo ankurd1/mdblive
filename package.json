@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./build/ && ./node_modules/webpack/bin/webpack.js -p --config webpack.prod.config.js",
+    "build": "./build.sh",
     "serve": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "redux": "^3.5.1",
     "redux-thunk": "^2.0.1",
     "urijs": "^1.17.1",
+    "react-bootstrap-table": "^2.1.5",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }

@@ -1,9 +1,24 @@
 import React from 'react'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import { connect } from 'react-redux'
 
-var MovieListContainer = React.createClass({
+const MovieListContainerImpl = React.createClass({
   render() {
-    return <h1>Movies yo</h1>;
+    return (
+      <BootstrapTable data={this.props.movies} search={true}>
+        <TableHeaderColumn dataField='Title' isKey={true} dataSort={true}>Title</TableHeaderColumn>
+        <TableHeaderColumn dataField='Genre' dataSort={true}>Genre</TableHeaderColumn>
+      </BootstrapTable>
+    )
   }
 });
 
-module.exports = MovieListContainer;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.displayList
+      .map(name => state.movies[name])
+      .filter(item => item != undefined)
+  }
+}
+
+export default connect(mapStateToProps)(MovieListContainerImpl)
