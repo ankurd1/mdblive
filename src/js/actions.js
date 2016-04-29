@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-fetch'
 import URI from 'urijs'
+import sanitize from './sanitizer'
 
 export function addFile(file) {
   return (dispatch, getState) => {
     // TODO maybe we can use some more properties of file here?
-    var sanitized = sanitize(file.name)
+    var sanitized = sanitize(file)
     if (sanitized.length != 0 && !getState().displayList[sanitized]) {
       dispatch(addMovie(sanitized))
       if (!getState().movies[sanitized]) {
@@ -26,10 +27,6 @@ export function addFile(file) {
       }
     }
   }
-}
-
-export function sanitize(fileName) {
-  return fileName;
 }
 
 function addMovie(movie) {
