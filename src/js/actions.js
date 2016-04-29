@@ -5,7 +5,7 @@ export function addFile(file) {
   return (dispatch, getState) => {
     // TODO maybe we can use some more properties of file here?
     var sanitized = sanitize(file.name)
-    if (sanitized.length != 0) {
+    if (sanitized.length != 0 && !getState().displayList[sanitized]) {
       dispatch(addMovie(sanitized))
       if (!getState().movies[sanitized]) {
         // not in store, we need to fetch this
@@ -28,7 +28,7 @@ export function addFile(file) {
   }
 }
 
-function sanitize(fileName) {
+export function sanitize(fileName) {
   return fileName;
 }
 
