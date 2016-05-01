@@ -1,31 +1,21 @@
-import fetch from 'isomorphic-fetch'
-import URI from 'urijs'
 import sanitize from './sanitizer'
+import fetch from './fetcher'
 
 export function addFile(file) {
   return (dispatch, getState) => {
     // TODO maybe we can use some more properties of file here?
-    var sanitized = sanitize(file)
-    if (sanitized.length != 0 && !getState().displayList[sanitized]) {
-      dispatch(addMovie(sanitized))
-      if (!getState().movies[sanitized]) {
-        // not in store, we need to fetch this
-        var uri = URI('http://www.omdbapi.com')
-          .query({'t': sanitized})
-          .toString()
-        return fetch(uri)
-          // TODO error handling
-          .then(response => {
-            if (response.ok) {
-              response.json().then(json => {
-                if (json.Response === "True") {
-                  dispatch(updateMovieData(sanitized, json))
-                }
-              })
-            }
-          })
-      }
+    let sanitized = sanitize(file)
+    if (sanitized.length == 0 || getState().displayList[sanitized]) {
+      return
     }
+
+    dispatch(addMovie(sanitized))
+    if (getState().movies[sanitized]) {
+      return
+    }
+
+    // not in store, we need to fetch this
+    fetch(sanitized, (data) => dispatch(updateMovieData(sanitized, data)))
   }
 }
 

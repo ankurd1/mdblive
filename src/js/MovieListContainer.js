@@ -43,9 +43,9 @@ const MovieListContainerImpl = React.createClass({
   sortRating(a, b, order) {
     let diff = Number(a['imdbRating']) - Number(b['imdbRating'])
     if (order == 'desc') {
-      return diff
-    } else {
       return -diff
+    } else {
+      return diff
     }
   }
 });
