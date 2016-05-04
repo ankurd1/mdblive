@@ -1,5 +1,6 @@
 import URI from 'urijs'
 import fetch from 'isomorphic-fetch'
+import { trackException } from './analytics'
 
 const omdbApi = 'http://www.omdbapi.com'
 const tmdbApi = 'https://api.themoviedb.org/3/find/'
@@ -16,12 +17,12 @@ export default function fetchMovieData(movie, onFetch) {
       if (response.ok) {
         return response.json()
       } else {
-        throw "Error from omdb"
+        throw "omdb_error"
       }
     })
     .then(omdbjson => {
       if (omdbjson.Response != 'True') {
-        throw "Movie not found on omdb"
+        throw "omdb_not_found"
       }
       // We need to call tmdb for the poster, because omdb's poster doesn't
       // work properly.
@@ -33,7 +34,7 @@ export default function fetchMovieData(movie, onFetch) {
           if (response.ok) {
             return response.json()
           } else {
-            throw "Error from tmdb"
+            throw "tmdb_error"
           }
         })
         .then(tmdbJson => {
@@ -48,5 +49,8 @@ export default function fetchMovieData(movie, onFetch) {
           onFetch(finalJson)
         })
     })
-    .catch(err => console.log('Error in fetcher: ' + err))
+    .catch(err => {
+      console.log('Error in fetcher: ' + err)
+      trackException({exDescription: 'fetcher: ' + err, exFata: false})
+    })
 }

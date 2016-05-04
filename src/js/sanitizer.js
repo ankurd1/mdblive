@@ -12,6 +12,7 @@ const nonAlphaNumRegex = /[^a-z0-9]/g
 
 // Exported for tests
 export default function sanitize(file) {
+  // TODO maybe we can use some more properties of file here?
   // ignore non-video files
   if (!file.type.startsWith('video') &&
       !file.name.endsWith('.avi') &&

@@ -1,10 +1,15 @@
 import sanitize from './sanitizer'
 import fetch from './fetcher'
+import { trackEvent } from './analytics'
 
 export function addFile(file) {
   return (dispatch, getState) => {
-    // TODO maybe we can use some more properties of file here?
     let sanitized = sanitize(file)
+    trackEvent({
+      eventCategory: 'selection',
+      eventAction: 'sanitize',
+      eventLabel: file.name
+    })
     if (sanitized.length == 0 || getState().displayList[sanitized]) {
       return
     }
