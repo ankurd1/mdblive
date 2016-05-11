@@ -5,6 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import Header from './Header'
+import Navbar from './Navbar'
 import MovieListContainer from './MovieListContainer'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -17,6 +18,7 @@ var main = () => {
   ReactDOM.render(
     <Provider store={store}>
       <App>
+        <Navbar/>
         <Header/>
         <MovieListContainer/>
       </App>
