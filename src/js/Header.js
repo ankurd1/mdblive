@@ -7,19 +7,17 @@ import { trackEvent } from './analytics'
 var HeaderImpl = React.createClass({
   setupInputNode(node) {
     // Hack because react's <input> doesn't support this yet
-    node.setAttribute("webkitdirectory", "");
-    node.setAttribute("mozdirectory", "");
+    node.setAttribute('webkitdirectory', '');
+    node.setAttribute('mozdirectory', '');
 
     this._inputNode = node;
   },
 
   render() {
     return (
-      <div className="row form-inline">
-        <div className="header-box">
-          <input className="col-xs-offset-8 col-xs-3 form-control" ref={this.setupInputNode} type="file" name="selector-box"/>
-          <button className="col-xs-1 btn btn-success" onClick={this.goButtonClicked}>Go!</button>
-        </div>
+      <div className='row form-inline header-box'>
+        <span className='col-xs-offset-4 col-xs-6 col-md-offset-8 col-md-3'><input className='form-control' ref={this.setupInputNode} type='file' name='selector-box'/></span>
+        <span className='col-xs-2 col-md-1'><button className='btn btn-success' onClick={this.goButtonClicked}>Go!</button></span>
       </div>
     );
   },

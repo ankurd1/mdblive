@@ -1,5 +1,9 @@
+.header-box button, .header-box input {
+  width: 100% !important;
+}
+
 .header-box {
-  margin: 10px 0;
+  padding-right: 10px;
 }
 
 .movie-list-tr td {
