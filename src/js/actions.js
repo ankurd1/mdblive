@@ -44,3 +44,17 @@ function updateMovieData(movie, data) {
     movie: movie
   }
 }
+
+export function showPopup(name) {
+  return {
+    type: 'SHOW_POPUP',
+    name: name
+  }
+}
+
+export function hidePopup(name) {
+  return {
+    type: 'HIDE_POPUP',
+    name: name
+  }
+}

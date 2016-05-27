@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 
 function movies(state = {}, action) {
-  console.log("movies reducer", state, action);
   switch (action.type) {
     case 'UPDATE_MOVIE_DATA':
       return { ...state, [action.movie]: action.data }
@@ -11,7 +10,6 @@ function movies(state = {}, action) {
 }
 
 function displayList(state = [], action) {
-  console.log("displayList reducer", state, action);
   switch (action.type) {
     case 'ADD_MOVIE':
       return [ ...state, action.movie ]
@@ -22,7 +20,19 @@ function displayList(state = [], action) {
   }
 }
 
+function popups(state = {}, action) {
+  switch (action.type) {
+    case 'SHOW_POPUP':
+      return { ...state, [action.name]: true }
+    case 'HIDE_POPUP':
+      return { ...state, [action.name]: false }
+    default:
+      return state
+  }
+}
+
 export const rootReducer = combineReducers({
   movies,
-  displayList
+  displayList,
+  popups
 });
