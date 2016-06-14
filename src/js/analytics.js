@@ -8,3 +8,7 @@ export function trackException(data) {
   data.hitType = 'exception'
   ga('send', data)
 }
+
+export function trackFBLead() {
+  fbq('track', 'Lead');
+}

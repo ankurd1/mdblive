@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { addFile, clearDisplay } from './actions'
-import { trackEvent } from './analytics'
+import { trackEvent, trackFBLead } from './analytics'
 
 var HeaderImpl = React.createClass({
   setupInputNode(node) {
@@ -29,6 +29,7 @@ var HeaderImpl = React.createClass({
         eventAction: 'go_click',
         eventValue: this._inputNode.files.length
       })
+      trackFBLead();
       this.props.onFilesPicked();
       var files = this._inputNode.files;
       for (var i = 0; i < files.length; i++) {
