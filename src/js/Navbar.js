@@ -49,7 +49,7 @@ let NavbarImpl = React.createClass({
             <ul>
               <li>Movees.xyz helps you to visualize your movie collection and decide what to watch next.</li>
               <li>Click the 'Choose File' button and select a directory that contains all your movies. Then click the 'Go!' button.</li>
-              <li>The app will look for movie files in the directory, fetch details from IMDB and display them in a searchable/sortable UI.</li>
+              <li>The app will look for movie files in the directory recurively, so you just need to select your top level movies folder. Once it finds some movie files, it will fetch details from IMDB and display them in a searchable/sortable UI.</li>
               <li>Note that your movie files are not uploaded to any server! The app just looks at the file names.</li>
               <li>Enjoy! :)</li>
             </ul>
